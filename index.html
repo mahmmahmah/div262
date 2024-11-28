@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.tooltip-container {
+  --background: #fefbff;
+  --inner-shadow: #9faef9;
+  --inner-outline: #34217d;
+  --inner-outline-bottom: #fafcfe;
+  --inner-outline-middle: #8880d5;
+  --inner-outline-outer-top: #fefcff;
+  --inner-outline-outer-bottom-1: #29107b;
+  --inner-outline-outer-bottom-2: #5b42c4;
+  --inner-outline-outer-bottom-3: #200265;
+  --line-1: #8676c9;
+  --line-2: #5c69ca;
+  position: absolute;
+  top: 50%;
+  right: 50%;  background: var(--background);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  padding: 0.7em 1.8em;
+  border-radius: 5px;
+  box-shadow: inset 0px 1px 8px 1px var(--inner-shadow),
+    0px 2px 0px 0px var(--inner-outline-bottom),
+    0px -2px 0px 0px var(--inner-outline),
+    -2px -2px 0px 0px var(--inner-outline),
+    2px -2px 0px 0px var(--inner-outline),
+    0px 0px 0px 6px var(--inner-outline-middle),
+    0px -2px 0px 7px var(--inner-outline-outer-top),
+    0px 4px 0px 7px var(--inner-outline-outer-bottom-1);
+}
+
+.tooltip-icon {
+  display: inline-block;
+  vertical-align: top;
+  width: 1.5em;
+}
+
+.tooltip-icon path {
+  stroke-width: 2px;
+  stroke: var(--inner-outline);
+  stroke-linejoin: round;
+}
+
+.tooltip-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+
+.tooltip-line-1 {
+  height: 0.2em;
+  width: 4em;
+  border-radius: 10em;
+  display: inline-block;
+  background: var(--line-1);
+}
+
+.tooltip-line-2 {
+  height: 0.2em;
+  width: 3em;
+  border-radius: 10em;
+  display: inline-block;
+  background: var(--line-2);
+}
+
+.tooltip {
+  position: absolute;
+  display: flex;
+  gap: 0.4em;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.6em 0.8em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  background: var(--background);
+  border-radius: 0.7em;
+
+  box-shadow: inset 0px 1px 8px 1px var(--inner-shadow),
+    0px 2px 0px 0px var(--inner-outline-bottom),
+    0px -2px 0px 0px var(--inner-outline),
+    -2px -2px 0px 0px var(--inner-outline),
+    2px -2px 0px 0px var(--inner-outline),
+    0px 0px 0px 6px var(--inner-outline-middle),
+    0px -2px 0px 7px var(--inner-outline-outer-top),
+    0px 4px 0px 7px var(--inner-outline-outer-bottom-1),
+    0px 7px 0px 7px var(--inner-outline-outer-bottom-2),
+    0px 10px 0px 7px var(--inner-outline-outer-bottom-3);
+}
+
+.tooltip::before {
+  content: "";
+  position: absolute;
+  height: 1em;
+  width: 1em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) translateY(2px) rotate(45deg);
+  background: var(--background);
+  border-radius: 0.2em;
+  box-shadow: 1px 1px 0px white, 5px 5px 0px rgb(136, 128, 213),
+    9px 9px 0px rgb(41, 16, 123), 12px 12px 0px #5b42c4,
+    14px 14px 0px rgb(41, 16, 123), inset -3px -3px 3px #9faef97a;
+}
+
+.tooltip-container:hover .tooltip {
+  top: -4.5em;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+    </style>
+</head>
+<body>
+    <center>
+<div class="tooltip-container">
+  <span class="tooltip">
+    <span>
+      <svg
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        class="tooltip-icon"
+      >
+        <defs>
+          <linearGradient id="gradient" x2="0" y2="1">
+            <stop offset="0%" stop-color="#96a1e8"></stop>
+            <stop offset="100%" stop-color="#5061be"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          fill="url(#gradient)"
+          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"
+        ></path>
+      </svg>
+    </span>
+    <span class="tooltip-lines">
+      <span class="tooltip-line-1"></span>
+      <span class="tooltip-line-2"></span>
+    </span>
+  </span>
+  <span class="text">
+    <span class="tooltip-lines">
+      <span class="tooltip-line-1"></span>
+      <span class="tooltip-line-2"></span>
+    </span>
+  </span>
+</div>
+
+    </center>
+</body>
+</html>
